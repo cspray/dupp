@@ -19,14 +19,14 @@ class ArrayDataSet {
     /**
      * @var array
      */
-    protected $tables = array();
+    protected $tables = [];
 
     /**
      * @param array $data
      */
     public function __construct(array $data) {
-        foreach ($data AS $tableName => $rows) {
-            $columns = array();
+        foreach ($data as $tableName => $rows) {
+            $columns = [];
             if (isset($rows[0])) {
                 $columns = array_keys($rows[0]);
             }
@@ -34,7 +34,7 @@ class ArrayDataSet {
             $metaData = new DbUnitTableMetaData($tableName, $columns);
             $table = new DbUnitTable($metaData);
 
-            foreach ($rows AS $row) {
+            foreach ($rows as $row) {
                 $table->addRow($row);
             }
             $this->tables[$tableName] = $table;
