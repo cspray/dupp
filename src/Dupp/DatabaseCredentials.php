@@ -11,14 +11,20 @@ namespace Dupp;
 
 class DatabaseCredentials {
 
+    private $schema;
     private $dsn;
     private $user;
     private $password;
 
-    function __construct($dsn, $user, $password) {
+    function __construct($schema, $dsn, $user, $password) {
+        $this->schema = $schema;
         $this->dsn = $dsn;
         $this->user = $user;
         $this->password = $password;
+    }
+
+    function getSchema() {
+        return $this->schema;
     }
 
     function getDsn() {
