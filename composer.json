@@ -1,0 +1,6 @@
+{
+    "name": "cspray/dupp",
+    "require": {
+        "phpunit/dbunit": "1.3.1"
+    }
+}
