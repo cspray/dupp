@@ -12,9 +12,10 @@ namespace Dupp;
 use PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData as DbUnitTableMetaData;
 use PHPUnit_Extensions_Database_DataSet_DefaultTable as DbUnitTable;
 use PHPUnit_Extensions_Database_DataSet_DefaultTableIterator as DbUnitTableIterator;
+use PHPUnit_Extensions_Database_DataSet_AbstractDataSet as DbUnitDataSet;
 use InvalidArgumentException;
 
-class ArrayDataSet {
+class ArrayDataSet extends DbUnitDataSet {
 
     /**
      * @var array
