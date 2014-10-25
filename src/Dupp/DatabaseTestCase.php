@@ -20,13 +20,25 @@ abstract class DatabaseTestCase extends DbUnitTestCase {
     final public function getConnection() {
         if ($this->conn === null) {
             $creds = $this->getDatabaseCredentials();
-            if (self::$pdo == null) {
-                self::$pdo = new PDO($creds->getDsn(), $creds->getUser(), $creds->getPassword());
-            }
+            $this->createPdo($creds);
             $this->conn = $this->createDefaultDBConnection(self::$pdo, $creds->getSchema());
         }
 
         return $this->conn;
+    }
+
+    public function getPdo() {
+        if (self::$pdo == null) {
+            $this->createPdo($this->getDatabaseCredentials());
+        }
+
+        return self::$pdo;
+    }
+
+    private function createPdo(DatabaseCredentials $creds) {
+        if (self::$pdo == null) {
+            self::$pdo = new PDO($creds->getDsn(), $creds->getUser(), $creds->getPassword());
+        }
     }
 
     /**
